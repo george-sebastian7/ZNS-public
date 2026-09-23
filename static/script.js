@@ -4,6 +4,15 @@ const input = document.getElementById("prompt-input");
 const modeSelect = document.getElementById("mode-select");
 const sendBtn = document.getElementById("send-btn");
 
+function showTyping() {
+    const div = document.createElement("div");
+    div.className = "message bot typing-indicator";
+    div.innerHTML = '<span class="label">Gemini</span><div class="dots"><span></span><span></span><span></span></div>';
+    chatArea.appendChild(div);
+    chatArea.scrollTop = chatArea.scrollHeight;
+    return div;
+}
+
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const prompt = input.value.trim();
@@ -16,6 +25,8 @@ form.addEventListener("submit", async (e) => {
     sendBtn.disabled = true;
     sendBtn.textContent = "...";
 
+    const typing = showTyping();
+
     try {
         const res = await fetch("/api/chat", {
             method: "POST",
@@ -24,6 +35,7 @@ form.addEventListener("submit", async (e) => {
         });
 
         const data = await res.json();
+        typing.remove();
 
         if (data.error) {
             appendMessage("error", data.error);
@@ -36,7 +48,8 @@ form.addEventListener("submit", async (e) => {
             appendCodeMessage(data);
         }
     } catch (err) {
-        appendMessage("error", "Chyba připojení: " + err.message);
+        typing.remove();
+        appendMessage("error", "Chyba pripojeni: " + err.message);
     } finally {
         sendBtn.disabled = false;
         sendBtn.textContent = "Odeslat";
@@ -69,22 +82,19 @@ function appendCodeMessage(data) {
 
     const label = document.createElement("span");
     label.className = "label";
-    label.textContent = "Gemini (kód)";
+    label.textContent = "Gemini (kod)";
 
-    const fileInfo = document.createElement("div");
-    fileInfo.className = "file-info";
-    fileInfo.textContent = "Soubor: " + data.filename;
+    const info = document.createElement("div");
+    info.className = "content";
 
-    const codeBlock = document.createElement("pre");
-    const codeEl = document.createElement("code");
-    codeEl.textContent = data.code;
-    codeBlock.appendChild(codeEl);
+    const status = data.run_success ? "uspesne spusten" : "chyba pri spusteni";
+    info.textContent = "Soubor " + data.filename + " ulozen a " + status + ".";
 
     const runResult = document.createElement("div");
     runResult.className = "run-result " + (data.run_success ? "success" : "failure");
 
     const runLabel = document.createElement("strong");
-    runLabel.textContent = data.run_success ? "Výstup:" : "Chyba při spuštění:";
+    runLabel.textContent = data.run_success ? "Vystup:" : "Chyba:";
     const runOutput = document.createElement("pre");
     runOutput.textContent = data.run_output;
 
@@ -92,8 +102,7 @@ function appendCodeMessage(data) {
     runResult.appendChild(runOutput);
 
     div.appendChild(label);
-    div.appendChild(fileInfo);
-    div.appendChild(codeBlock);
+    div.appendChild(info);
     div.appendChild(runResult);
     chatArea.appendChild(div);
     chatArea.scrollTop = chatArea.scrollHeight;
