@@ -8,6 +8,9 @@ from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
 
+GEMINI_MODEL = "gemini-2.5-flash"
+CLAUDE_MODEL = "claude-sonnet-4-5-20241022"
+
 gemini_client = None
 claude_client = None
 
@@ -66,7 +69,7 @@ def _call_gemini(prompt: str, system: str | None = None) -> str:
     c = get_gemini_client()
     contents = [system, prompt] if system else prompt
     response = c.models.generate_content(
-        model="gemini-2.0-flash",
+        model=GEMINI_MODEL,
         contents=contents,
     )
     return response.text
@@ -75,7 +78,7 @@ def _call_gemini(prompt: str, system: str | None = None) -> str:
 def _call_claude(prompt: str, system: str | None = None) -> str:
     c = get_claude_client()
     kwargs = {
-        "model": "claude-sonnet-4-5-20241022",
+        "model": CLAUDE_MODEL,
         "max_tokens": 16000,
         "messages": [{"role": "user", "content": prompt}],
     }
