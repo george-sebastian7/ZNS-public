@@ -1,0 +1,27 @@
+A. Text Zadání
+Na testovacím serveru je připraveno virtuální prostředí ve formě mřížkového bludiště. Mřížkové bludiště sestává z polí. Pole jsou čtvercová. Za sousední pole se pokládají pole, která mají společnou hranu. Pole se dělí na pole, která jsou dostupná a pole, na kterých je zeď. V bludišti jsou dva druhy objektů: agenty a bedny. Každá bedna má právě jednu barvu. Množina barev beden: červená, modrá, žlutá, zelená, oranžová, fialová. Bedny se nemohou samy pohybovat. Agenty se mohou samy pohybovat. Agent může na pole vstoupit, pokud se jedná o sousední pole a toto pole je dostupné a volné (není na něm jiný agent nebo zeď). Agent může vstoupit na libovolné pole, na kterém je bedna. V levém horním rohu bludiště je plocha, kterou tvoří 4x4 dostupných políček, která slouží k odevzdávání beden. Pokud na některé pole určené k odevzdávání beden agent položí bednu, bedna z prostředí zmizí (je přijata). Agent uveze právě jednu bednu. Agent má k dispozici senzory, kterými vnímá okolí. V dosahu senzorů agenta je oblast 9x9 polí (agent je na poli uprostřed oblasti), senzory "vidí za zeď". Senzory vrací informaci o každém poli v dosahu: zda je pole dostupné a volné, zda není dostupné (zeď), zda je dostupné a je na něm bedna, zda je dostupné a je na něm jiný agent. Dále senzory vrací informaci o tom, zda se jedná o pole určené k odevzdávání beden či nikoliv. Pokud je na poli bedna, senzory vrací informaci o barvě bedny. Barva bedny rozhoduje o tom, kolik kreditů agent nasbírá. Červená bedna 10 kreditů. Modrá bedna 5 kreditů. Ostatní barvy 0 kreditů. Kredity agent získává v okamžiku odevzdání bedny na sběrném místě. Dále vrací senzory informaci o energetické náročnosti pole. Informace ze senzorů jsou předávány ve formátu JSON. Agent má k dispozici tyto akce: akce1: přesun na sousední pole, akci lze provést, pokud je sousední pole dostupné a není na něm jiný agent, akce2: naložení bedny, akci lze provést, pokud agent stojí na poli, kde je bedna k naložení a je volný (nemá naloženu žádnou bednu), akce3: vyložení bedny, akci lze provést, pokud agent stojí na poli, na kterém není bedna a agent má naloženu bednu. Energetická náročnost pole je parametr, který určuje kolik energie agent spotřebuje při přesunu na dané pole. Pole v mřížce mají různou energetickou náročnost: nízkou, střední a vysokou. Každý agent má omezenou zásobu energie v baterii. Nabíjení baterie v průběhu činnosti agenta v úloze neuvažujeme, po vybití baterie agent s úlohou končí a provede se vyhodnocení. Pro barvu beden platí: a) bedna má baru přiřazenu při vzniku. b) kdzž se na sousením poli vedle červené bedny objeví bedna žlutá, po čase se červená bedna změní na oranžovou. c) Pokud se někde objeví zelená bedna, s pravděpodobností 0,9 se v okolí objeví po čase i bedna červená.
+Agent se pohybuje v bludišti dokud mu nedojde energie, sbírá modré a červené bedny (rozhoduje se, kterou bednu sebere) a odváží je na sběrné místo. Při řešení využívá agent funkce, která má k dispozici díky své interní architektuře (např. agent orientovaný na cíl plánuje, agent založený na užitku se snaží optimalizovat užitkovou funkci, učící se agent se učí pravidla vzniku beden).
+B. Úkoly
+
+1. Analyzujte úlohu pomocí metodiky PEAS.
+2. Doplňte analýzu z bodu 1 pro každý z následujících pěti typů agenta.
+   * Jednoduchý reflexní agent (Simple reflex agent)
+   * Reflexní agent s modelem (Model-based reflex agent)
+   * Agent orientovaný na cíl (Goal-based agent)
+   * Agent založený na užitku (Utility-based agent)
+   * Učící se agent (Learning agent)
+3. V libovolném procedurálním programovacím jazyce (= dle své volby, např. C++, Java, Python,…) implementujte program, který přes Gemini API (nebo API jiného AI nástroje - např. Claude) vygeneruje kód v Pythonu k implementaci těchto agentů:
+   * Jednoduchý reflexní agent (Simple reflex agent)
+   * Reflexní agent s modelem (Model-based reflex agent)
+   * Agent orientovaný na cíl (Goal-based agent)
+   * Agent založený na užitku (Utility-based agent)
+   * Učící se agent (Learning agent)
+   * V případě reflexních agentů respektujte požadavek na generování kódu celého agenta přes Gemini API (zahrnout ladění agenta do programu, "program ladí program), u ostaních agentů je možný postup, kdy program generuje pouze některé funkce agenta a do sestavení agenta zasáhne člověk ručně. Měli byste se však snažit o dosažení co nevyšší automatizace. Míra autoamtizace bude záležet na tom, jaký nástroj má student k dispozici. Za referenční je pokládán nástroj Gemini API s modelem 3.
+4. Agenty otestujte oproti virtuálnímu prostředí na serveru. Se simulátorem agenty interagují skrze API.
+
+C. API
+Bude doplněno v 2. týdnu.
+D. Testovací server
+Svoji implementaci můžete průběžně testovat oproti webové aplikaci dostupné z vnitřní sítě ČVUT na adrese http://bizns.kam.in.fit.cvut.cz/
+Přístup z vnější sítě (z Internetu) si můžete zajistit pomocí VPN, návod najdete na webových stránkách FIT ČVUT (https://help.fit.cvut.cz/vpn/index.html).
+Bude doplněno v 2. týdnu.
