@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini Chat</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gemini Chat</h1>
+
+        <div class="controls">
+            <select id="mode-select">
+                <option value="answer">Odpověď</option>
+                <option value="code">Kód</option>
+            </select>
+        </div>
+
+        <div id="chat-area"></div>
+
+        <form id="prompt-form">
+            <input type="text" id="prompt-input" placeholder="Napiš prompt..." autocomplete="off">
+            <button type="submit" id="send-btn">Odeslat</button>
+        </form>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
