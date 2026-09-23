@@ -9,7 +9,7 @@ from flask import Flask, render_template, request, jsonify
 app = Flask(__name__, template_folder="templates", static_folder="static")
 
 GEMINI_MODEL = "gemini-3.6-flash"
-CLAUDE_MODEL = "claude-sonnet-4-5-20241022"
+CLAUDE_MODEL = "claude-haiku-4-5-20251001"
 
 gemini_client = None
 claude_client = None
