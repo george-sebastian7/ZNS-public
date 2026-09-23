@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Generator</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Agent Generator</h1>
+        <p class="subtitle">Claude API → Python agent code</p>
+
+        <div class="controls">
+            <select id="agent-select">
+                {% for t in agent_types %}
+                <option value="{{ t }}">{{ t | replace('_', ' ') | title }}</option>
+                {% endfor %}
+            </select>
+            <button id="generate-btn">Generate</button>
+            <button id="generate-all-btn">Generate All</button>
+        </div>
+
+        <div id="status-bar"></div>
+
+        <div id="output-area"></div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

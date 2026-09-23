@@ -1,0 +1,139 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: "Courier New", Courier, monospace;
+    background: #000;
+    color: #fff;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.layout {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 260px;
+    padding: 16px;
+    border-right: 1px solid #333;
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+h1 {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 8px;
+}
+
+.control-group {
+    margin-bottom: 14px;
+}
+
+.control-group label {
+    display: block;
+    font-size: 0.7rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+.btn-row {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+button {
+    background: #222;
+    color: #ccc;
+    border: 1px solid #444;
+    padding: 6px 12px;
+    font-family: inherit;
+    font-size: 0.8rem;
+    cursor: pointer;
+    flex: 1;
+}
+
+button:hover { background: #333; }
+button:disabled { opacity: 0.3; cursor: not-allowed; }
+button.active { background: #fff; color: #000; font-weight: bold; }
+
+.full-btn {
+    width: 100%;
+    margin-top: 4px;
+    background: #1a1a2e;
+    color: #88aaff;
+    border-color: #335;
+}
+
+.full-btn:hover { background: #252545; }
+
+.check-label {
+    display: block;
+    font-size: 0.75rem;
+    padding: 2px 0;
+    cursor: pointer;
+}
+
+.check-label.disabled { color: #555; }
+
+.check-label input { margin-right: 4px; }
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+}
+
+.legend-item {
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.swatch {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: 1px solid #555;
+}
+
+.swatch.wall { background: #444; }
+.swatch.dropoff { background: #1a1a2e; border-color: #3355aa; }
+.swatch.agent { background: #00ffff; border-radius: 50%; }
+.swatch.box-red { background: #cc3333; }
+.swatch.box-green { background: #33cc33; }
+.swatch.box-blue { background: #3366cc; }
+.swatch.box-yellow { background: #cccc33; }
+.swatch.box-orange { background: #cc8833; }
+.swatch.box-purple { background: #9933cc; }
+
+.canvas-area {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+canvas {
+    background: #000;
+    border: 1px solid #333;
+}
+
+#stats-content {
+    font-size: 0.75rem;
+    line-height: 1.6;
+}
+
+.agent-stat {
+    border-bottom: 1px solid #222;
+    padding: 2px 0;
+}

@@ -1,0 +1,129 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: "Courier New", Courier, monospace;
+    background: #000;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container { width: 100%; max-width: 900px; }
+
+h1 {
+    text-align: center;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 0.8rem;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 12px;
+}
+
+.controls {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+select, button {
+    background: #111;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 8px 16px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+button {
+    background: #fff;
+    color: #000;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover { background: #ccc; }
+button:disabled { background: #444; color: #888; cursor: not-allowed; }
+
+#status-bar {
+    padding: 8px 12px;
+    margin-bottom: 12px;
+    font-size: 0.85rem;
+    border: 1px solid #333;
+    min-height: 36px;
+}
+
+#status-bar.loading { color: #aaa; border-color: #555; }
+#status-bar.success { color: #8f8; border-color: #4a4; }
+#status-bar.warning { color: #ff8; border-color: #884; }
+#status-bar.error { color: #f88; border-color: #844; }
+
+#output-area { display: flex; flex-direction: column; gap: 10px; }
+
+.result {
+    border: 1px solid #333;
+    padding: 12px;
+}
+
+.result.success { border-left: 3px solid #4a4; }
+.result.failure { border-left: 3px solid #a44; }
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+.badge {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border: 1px solid #555;
+}
+
+.result.success .badge { color: #8f8; border-color: #4a4; }
+.result.failure .badge { color: #f88; border-color: #a44; }
+
+.result-meta { font-size: 0.75rem; color: #888; margin-bottom: 8px; }
+
+pre {
+    background: #111;
+    padding: 10px;
+    overflow-x: auto;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    border: 1px solid #222;
+    margin-top: 6px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.error-text { color: #f88; }
+
+details { margin-top: 8px; }
+details summary {
+    cursor: pointer;
+    color: #888;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+code { color: #ccc; }
+
+select:focus, button:focus { outline: 1px solid #fff; }
