@@ -3,24 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gemini Chat</title>
+    <title>AI Chat</title>
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Gemini Chat</h1>
+        <h1>AI Chat</h1>
 
         <div class="controls">
+            <select id="provider-select">
+                {% for p in providers %}
+                <option value="{{ p }}">{{ p | capitalize }}</option>
+                {% endfor %}
+            </select>
             <select id="mode-select">
-                <option value="answer">Odpověď</option>
-                <option value="code">Kód</option>
+                <option value="answer">Odpoved</option>
+                <option value="code">Kod</option>
             </select>
         </div>
 
         <div id="chat-area"></div>
 
         <form id="prompt-form">
-            <input type="text" id="prompt-input" placeholder="Napiš prompt..." autocomplete="off">
+            <input type="text" id="prompt-input" placeholder="Napis prompt..." autocomplete="off">
             <button type="submit" id="send-btn">Odeslat</button>
         </form>
     </div>

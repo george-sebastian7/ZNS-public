@@ -36,9 +36,11 @@ h1 {
     margin-bottom: 12px;
     display: flex;
     justify-content: center;
+    gap: 8px;
 }
 
-#mode-select {
+#mode-select,
+#provider-select {
     background: #111;
     color: #fff;
     border: 1px solid #444;
@@ -48,7 +50,8 @@ h1 {
     cursor: pointer;
 }
 
-#mode-select:focus {
+#mode-select:focus,
+#provider-select:focus {
     outline: 1px solid #fff;
 }
 
